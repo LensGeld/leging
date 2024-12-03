@@ -1,0 +1,527 @@
+@font-face{
+    font-family: "Inv";
+    src: url('/Lens_Geld_completo/lens-geld/public/assets/fonts/Inversionz.ttf')
+   }
+   
+   @font-face {
+       font-family: "ArchivoBlack";
+       src: url('/Lens_Geld_completo/lens-geld/public/assets/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+   }
+   
+   /* ----------------------------------------------------ROOT-VARIABLES-------------------------------------------------------------------*/
+:root {
+    --main: white;
+    --secondary: #1c283e;
+    --background: #efebe7;
+    --button: #1c283e;
+    --hover: #264c68;
+    --text: #1c283e;
+    --shadow: #333;
+    --moon: white;
+    --sun: #ffffff;
+    --menu-text: white;
+    --mensagem-user: #1c283e;
+    --user-text: #f1f1f1;
+    --mensagem-ma: #f1f1f1;
+    --bars: #1c283e;
+    --bars-text: #f1f1f1;
+    --gastos: #e61d1d;
+    --dinheiro:#6B8E23;
+    --cor-padrao: #e61d1d; 
+    
+}
+.dark-mode{
+    --main: #1c283e ;
+    --secondary: #6b8ea7;
+    --background:#1c283e;
+    --button: #efebe7;
+    --hover: #6b8ea7;
+    --text:white;
+    --shadow: #555555;
+    --moon: #ffffff;
+    --sun: #0b101b;
+    --menu-text: white;
+    --mensagem-user: #f1f1f1;
+    --user-text: #1c283e;
+    --mensagem-ma: #1c283e;
+    --bars: #0b101b;   
+    --bars-text: #f1f1f1; 
+    --gastos: #A50034;
+    --dinheiro:#8BC34A;
+    --cor-padrao: #A50034; 
+    }
+  /* ----------------------------------------------------BODY-------------------------------------------------------------------*/
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    appearance: none;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'ArchivoBlack';
+}
+   html{
+    font-size: 14px;
+ }
+  /* Garantir que o gráfico e as seções abaixo não saiam do layout */
+body {
+    height: 100%; /* Garante que o HTML e o body ocupem toda a altura */
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column; /* Organiza os elementos em uma coluna */
+    align-items: center;
+    padding: 2px;
+}
+/* Corpo da página e conteúdo */
+body, html {
+    height: 100%; /* Garantir que o body ocupe toda a altura da tela */
+    margin: 0;    /* Remover margens padrão */
+    display: flex; /* Definindo um layout flex */
+    flex-direction: column; /* Organizando o layout de forma vertical */
+}
+/* Garantir que o conteúdo principal (notícias) e o rodapé se alinhem corretamente */
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para garantir que o conteúdo ocupe o espaço restante */
+}
+
+   /* Container geral que contém todas as seções */
+   .container {
+    width: 100%;
+    max-width: 1200px; /* Limita a largura máxima para evitar que o conteúdo ultrapasse a tela */
+    margin: 0 auto; /* Centraliza o conteúdo da página */
+    padding: 20px; /* Adiciona um padding para evitar que o conteúdo grude nas bordas */
+    box-sizing: border-box; /* Garante que o padding seja contado no tamanho total */
+}
+button:hover {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--hover); /* Cor de fundo do botão ao passar o mouse */
+    color: var(--moon); /* Cor do texto do botão ao passar o mouse */
+}
+
+section{
+    padding: 50px, 10%;
+}
+img{
+    width: 100%;
+    border-radius: 15%;
+   }
+   main{
+    display: flex;
+    flex-direction: column; /* Alinhar todos os elementos em coluna */
+    color: var(--text);/*cor dos textos no main*/
+}
+   
+/*----------------------------------------VISAO-GERAL----------------------------------------*/
+h1{
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+h2{
+    font-size: 1.4rem;
+}
+h3{
+    font-size: 0.87rem;
+}
+h4{
+    font-size: 0.8rem;
+}
+h5{
+    font-size: 0.77rem;
+}
+small{
+    font-size: 0.75rem;
+}
+.text-muted{
+    color: var(--text);
+}
+main{
+    margin-top: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+/*coloca o Visão Geral no local correto*/
+main .insights{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+main .insights > div span{
+    background: var(--hover); /*cor das bolhas de icones no visão geral*/
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--bars-text);/*cor do desenho dentro das bolhas no visão geral*/
+    font-size: 2rem;
+}
+main .insights > div{
+    background: var(--background); /*Fundo das divs */
+    margin-top: 1rem;
+}
+    
+main .insights > div.expenses span{
+    background: var(--gastos);/*Cor icone despesas mensais*/
+}
+main .insights > div.income span{
+    background: var(--dinheiro); /*Cor icone de dinheiro restante */
+}
+main .insights > div.expenses h1{
+    background: var(--gastos); /*cor do numeros em despesas mensais*/
+}
+main .insights > div.income h1{
+    background: var(--dinheiro);/*cor dos numeros em dinheiro restante*/
+}
+main .recent-expenses table{
+    background: var(--background);/*cor de fundo da tabela de gastos*/
+    width: 100%;
+    text-align: center;
+    transition: all 30ms ease; 
+    color: var(--text); /*cor do texto na tabela de gastos*/
+}
+/*-------------------------------------RECEITA-------------------------------------*/
+/* Estilos para a área de receitas no painel */
+main .insights > div .middle{
+    display: flex; /* Alinha os elementos de forma flexível */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    justify-content: space-between; /* Espaça os itens igualmente */
+}
+main .insights h3{
+    margin: 1rem 0 0.6rem; /* Define margens ao redor do título */
+    font-size: 1rem; /* Define o tamanho da fonte do título */
+}
+main .insights .progress{
+    position: relative; /* Permite posicionamento absoluto dentro do elemento */
+    width: 92px; /* Largura do círculo progressivo */
+    height: 92px; /* Altura do círculo progressivo */
+    border-radius: 50%; /* Torna o elemento um círculo */
+}
+main .insights svg{
+    width: 7rem; /* Define a largura do SVG */
+    height: 7rem; /* Define a altura do SVG */
+}
+main .insights svg circle{
+    fill: none; /* Remove o preenchimento do círculo */
+    stroke-width: 14; /* Largura da borda do círculo */
+    stroke-linecap: round; /* Torna as bordas arredondadas */
+    transform: translate(5px, 5px); /* Desloca o círculo para dentro */
+    stroke-dasharray: 110; /* Define o comprimento do círculo */
+    stroke-dashoffset: 92; /* Define o ponto de onde a borda começa */
+}
+main .insights .receita svg circle{
+    stroke-dashoffset: -30; /* Ajusta o ponto de início do círculo de receita */
+    stroke-dasharray: 200; /* Define o comprimento do círculo de receita */
+}
+main .insights .expenses svg circle{
+    stroke-dashoffset: 20; /* Ajusta o ponto de início do círculo de despesas */
+    stroke-dasharray: 80; /* Define o comprimento do círculo de despesas */
+}
+main .insights .income svg circle{
+    stroke-dashoffset: 35; /* Ajusta o ponto de início do círculo de renda */
+    stroke-dasharray: 110; /* Define o comprimento do círculo de renda */
+}
+main .insights .progress .number{
+    position: absolute; /* Posiciona o número de forma absoluta dentro do círculo */
+    top: 0; /* Alinha o número ao topo */
+    left: 0; /* Alinha o número à esquerda */
+    height: 100%; /* Faz o número ocupar toda a altura do elemento */
+    width: 100%; /* Faz o número ocupar toda a largura do elemento */
+    display: flex; /* Usa o modelo de layout flex */
+    justify-content: center; /* Centraliza o número horizontalmente */
+    align-items: center; /* Centraliza o número verticalmente */
+}
+main .insights small{
+    margin-top: 1.3rem; /* Define a margem superior para o texto pequeno */
+    display: block; /* Exibe o texto como bloco */
+}
+main .recent-expenses{
+    margin-top: 2rem; /* Define a margem superior para as despesas recentes */
+    margin-left: 3%; /* Define a margem à esquerda */
+    margin-bottom: 10%; /* Define a margem inferior */
+    width: 100%; /* Define a largura total do elemento */
+}
+main .recent-expenses h2{
+    margin-bottom: 0.8rem; /* Define a margem inferior para o título de despesas */
+}
+main table tbody td{
+    height: 2.8rem; /* Define a altura das células da tabela */
+    border-bottom: 1px solid var(--text); /* Adiciona uma linha de separação na parte inferior */
+    color: var(--text); /* Define a cor do texto nas células */
+}
+main table tbody tr:last-child td{
+    border: none; /* Remove a borda da última linha da tabela */
+}
+
+/*--------------------------------------------------------TABELA--------------------------------------------------------*/
+.money{
+    font-weight: 800; /* Deixa o texto em negrito */
+    font-size: 1.4rem; /* Define o tamanho da fonte */
+    width: 80%; /* Define a largura da célula */
+}
+.btn-confirmar{
+    color: var(--background); /* Define a cor do texto do botão */
+    font-weight: 400; /* Define o peso da fonte */
+    background: var(--button); /* Define a cor de fundo do botão */
+    margin-top: 10px; /* Define a margem superior */
+    border-radius: 10px; /* Torna os cantos do botão arredondados */
+    height: 35px; /* Define a altura do botão */
+    width: 100px; /* Define a largura do botão */
+}
+.btn-confirmar:hover{
+    background: var(--hover); /* Muda a cor de fundo ao passar o mouse */
+}  
+.gastosname{
+    font-size: 1rem; /* Define o tamanho da fonte para o nome dos gastos */
+    border-radius: 5px; /* Torna os cantos arredondados */
+}
+.gastosvalor{
+    font-size: 1rem; /* Define o tamanho da fonte para o valor dos gastos */
+    width: 25%; /* Define a largura da célula */
+    margin-right: 20px; /* Adiciona margem à direita */
+    margin-top: 0px; /* Define a margem superior */
+    border-radius: 5px; /* Torna os cantos arredondados */
+}
+/*--------------------------------------------------------GRÁFICO--------------------------------------------------------*/
+/* Container do gráfico */
+#chart-container {
+    padding: 20px;     /* Adiciona espaçamento interno ao container */
+    background-color: var(--background); /* Define a cor de fundo */
+    max-width: 900px; /* Limita a largura do gráfico */
+    height: 400px;  /* Define a altura do gráfico */
+    margin: 0 auto;  /* Centraliza o gráfico horizontalmente */
+}
+/* Ajustes no gráfico */
+#expense-chart {
+    background-color: var(--background); /* Cor de fundo do gráfico */
+    width: 100%;      /* Faz o gráfico ocupar toda a largura */
+    display: block; /* Faz o gráfico se comportar como um bloco */
+}
+
+
+/*-----------------------------------MODAL (Caixa de Diálogo)----------------------------------*/
+/* Estilo do modal */
+.modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed; /* Fixa o modal na tela */
+    top: 0; /* Alinha ao topo */
+    left: 0; /* Alinha à esquerda */
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    justify-content: center; /* Centraliza o conteúdo */
+    align-items: center; /* Alinha verticalmente */
+    z-index: 1000; /* Coloca o modal acima de outros elementos */
+}
+
+/* Conteúdo do modal */
+.modal-content {
+    background-color: white; /* Cor de fundo do modal */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    width: 80%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: relative; /* Permite posicionar elementos dentro */
+}
+
+/* Botão de fechar do modal */
+.close-btn {
+    position: absolute; /* Posiciona no canto superior direito */
+    top: 10px; /* Distância do topo */
+    right: 10px; /* Distância da direita */
+    font-size: 20px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de ponteiro */
+}
+
+/* Classe para exibir o modal */
+.modal.show {
+    display: flex; /* Torna o modal visível */
+}
+
+/* Botão de gastos */
+.btn-gastos {
+    color: var(--background); /* Cor do texto */
+    font-weight: 400; /* Peso da fonte */
+    background: var(--button); /* Cor de fundo */
+    margin-top: 10px; /* Margem superior */
+    border-radius: 15px; /* Bordas arredondadas */
+    height: 50px; /* Altura do botão */
+    width: 125px; /* Largura do botão */
+}
+
+/* Estilo para cada item de gasto */
+.expense-item {
+    margin: 5px; /* Margem ao redor do item */
+    padding: 10px; /* Espaçamento interno */
+    cursor: pointer; /* Cursor de ponteiro */
+    display: flex; /* Layout flexível */
+    align-items: center; /* Alinha os itens verticalmente */
+}
+/*----------------------------------------IMPOSTOS SOBRE INVESTIMENTOS----------------------------------------*/
+#investment-taxes {
+    background: var(--background);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+#investment-taxes h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+#investment-taxes form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#investment-taxes label {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+#investment-taxes input, #investment-taxes select {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+#investment-taxes button {
+    background: var(--button);
+    color: var(--background);
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+#investment-taxes button:hover {
+    background: var(--hover);
+}
+
+#investment-taxes p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+/*----------------------------------------CARTEIRA DE INVESTIMENTOS----------------------------------------*/
+#portfolio {
+    background: var(--background);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+#portfolio h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+#portfolio-table {
+    overflow-x: auto;
+}
+
+#portfolio-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    color: var(--text);
+}
+
+#portfolio-table th, #portfolio-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+#portfolio-table th {
+    font-weight: 700;
+    color: var(--text);
+}
+
+#portfolio-table td {
+    font-size: 1rem;
+}
+
+#portfolio-table td:nth-child(4) {
+    font-weight: 600;
+}
+
+#add-investment-btn {
+    background: var(--button);
+    color: var(--background);
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#add-investment-btn:hover {
+    background: var(--hover);
+}
+
+/*----------------------------------------SIMULADOR DE INVESTIMENTOS----------------------------------------*/
+#investment-simulator {
+    background: var(--background);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+#investment-simulator h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+#investment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+#investment-form label {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+#investment-form input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+#investment-form button {
+    background: var(--button);
+    color: var(--background);
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+#investment-form button:hover {
+    background: var(--hover);
+}
+
+#investment-chart {
+    margin-top: 2rem;
+    background: var(--background);
+    max-width: 900px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
